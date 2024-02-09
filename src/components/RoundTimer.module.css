@@ -1,0 +1,24 @@
+.main {
+    background-color: #2E325A;
+    width: 410px;
+    height: 410px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.timer {
+    transform: rotate(-90deg);
+
+}
+.timer_time {
+    /* translate should be roughly 2r*/
+    transform: rotate(90deg) translate(0px, -100px);
+    fill: var(--light-blue);
+    font-size: 14px;
+}
+.timer_text {
+    /* translate should be roughly 2r*/
+    transform: rotate(90deg) translate(0px, -80px);
+    fill: var(--light-blue);
+    font-size: 8px;
+}
