@@ -9,6 +9,16 @@ export const stateAtom = atom(
     }
 );
 
-export const timer = atom(
-    30
+const DEFAULT_BREAKS_MIN = [30, 15, 5];
+export const breaks = atom(
+    DEFAULT_BREAKS_MIN
 );
+export const currentBreakIndex = atom(0);
+export const timeSec = atom((get)=>{
+    const times =get(breaks);
+    const index =get(currentBreakIndex);
+    if(index<times.length){
+        return times[index] * 60;
+    }
+    return DEFAULT_BREAKS_MIN[0] * 60;
+});

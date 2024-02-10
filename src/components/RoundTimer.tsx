@@ -2,10 +2,15 @@ import {useEffect, useMemo, useState} from "react";
 import styles from './RoundTimer.module.css';
 import {TimerStatus} from "../types/status";
 
-export const RoundTimer = () => {
-    //This will be cvahnged throuh settings
+interface Props {
+   time :number,
+   setTime: (number)=>void
+}
+//TODO need to reset the remaining timer when setting the new time value
+export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
+    //TODO Use var instead
     let timerInnerColor = "#F87070"
-    const [totalTime, setTotalTime] = useState(30 * 60);
+    const [passedTime, setPassedTime] = useState(5 * 60);
     const [status, setStatus] = useState(TimerStatus.ACTIVE);
     let timerText = useMemo(() => {
         switch (status) {
@@ -19,13 +24,12 @@ export const RoundTimer = () => {
                 return "Start"
         }
     }, [status])
-    const [timer, setTimer] = useState(25 * 60);
     // Calculate the circle's circumference
     const radius = 45;
     const circleLength = 2 * Math.PI * radius; // Same as your stroke-dasharray value
 
     // Calculate the stroke-dashoffset based on timeLeft
-    const strokeDashoffset = (1 - timer / totalTime) * circleLength;
+    const strokeDashoffset = (1 - passedTime / time) * circleLength;
 
     // Format time in mm:ss for display
     const formatTime = (time) => {
@@ -44,16 +48,16 @@ export const RoundTimer = () => {
     }
     useEffect(() => {
             const timerId = setTimeout(() => {
-                if (timer > 0 && status === TimerStatus.ACTIVE) {
-                    setTimer(timer - 1);
-                } else if (timer === 0 && status === TimerStatus.ACTIVE) {
+                if (passedTime > 0 && status === TimerStatus.ACTIVE) {
+                    setPassedTime(passedTime - 1);
+                } else if (passedTime === 0 && status === TimerStatus.ACTIVE) {
                     setStatus(TimerStatus.FINISHED)
                 } else {
 
                 }
             }, 1000);
             return () => clearTimeout(timerId);
-        }, [timer, status]
+        }, [passedTime, status]
     );
     return (
         <>
@@ -66,7 +70,7 @@ export const RoundTimer = () => {
                                 // stroke-dasharray={circleLength} stroke-dashoffset={10}
                                 className="timer-progress"/>
                         <text x="50" y="55" text-anchor="middle" fontSize="15" className={styles.timer_time}>
-                            {formatTime(timer)}
+                            {formatTime(passedTime)}
                         </text>
                         <text x="50" y="55" text-anchor="middle" fontSize="8" className={styles.timer_text}>
                             {timerText}
