@@ -6,20 +6,26 @@
     flex-direction: row;
     align-items: center;
     background-color: var(--black);
-    border-radius: 3rem;
-    height: 3.9375rem;
+    border-radius: 2.5rem;
+    height: 3rem;
     padding: 0.75rem;
     gap:1rem;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+
 }
 .break_button {
-    width: 140px;
+    width: 100px;
     border-radius: 3rem;
-    background-color: var(--purple);
-    padding: 1rem;
+    padding: 0.8rem;
     cursor: pointer;
+    background-color: var(--black);
+    color:var(--grey)
 }
-.break_button::active {
-
+.active {
+    background-color: var(--highlight-color);
+    color: var(--black);
 }
 .break_button::hover {
 

@@ -14,14 +14,17 @@ interface ButtonProps {
     active:boolean;
 }
 export const TimeButton:React.FC<ButtonProps> = ({title, breakMin, onClick, active}) => {
+    const buttonClass = active
+        ? `${styles.break_button} ${styles.active}` // If the button is active, include the active class
+        : styles.break_button; // Otherwise, just use the default break_button class
     return (
-       <div className={styles.break_button} onClick={onClick}>
+       <div className={buttonClass} onClick={onClick}>
            {title}
        </div>
     )
 };
 export const TimeMenu:React.FC<Props> = ({breakMin, selected, setSelected}) => {
-    //This will be cvahnged throuh settings
+   //Colors hould change through settings
     return (
         <>
             <div className={styles.main} >

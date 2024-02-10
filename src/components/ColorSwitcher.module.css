@@ -1,0 +1,29 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--light-black);
+  margin: 5px;
+  cursor: pointer;
+
+  position: relative; /* Added for hover effect positioning */
+  border: 1px solid transparent; /* Initial border, transparent */
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.circle:hover {
+  border: 1px solid var(--grey);
+  box-shadow: 0 0 0 3px var(--white);
+}
+
+.selected {
+  /* Additional styles if needed, e.g., border for selected circle */
+}

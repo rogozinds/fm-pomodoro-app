@@ -1,8 +1,13 @@
 .main {
-
+    display: flex;
+    flex-direction: column;
+    gap : 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .settings_icon {
    color:var(--grey);
     font-size: 28px;
+    cursor: pointer;
 }

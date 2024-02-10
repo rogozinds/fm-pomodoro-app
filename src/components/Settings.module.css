@@ -1,0 +1,34 @@
+.main {
+    position: fixed; /* Positioning the popup over other content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centering the popup */
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 540px;
+    height: 490px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow for depth */
+    z-index: 1000; /* Ensuring the popup is above other content */
+    padding: 20px; /* Padding inside the popup */
+    box-sizing: border-box; /* Ensures padding does not affect overall dimensions */
+    color: var(--light-black);
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .main {
+        width: 90vw; /* 90% of the viewport width */
+        height: 90vh; /* 90% of the viewport height */
+        max-width: none; /* Overrides any max-width set elsewhere */
+        max-height: none; /* Overrides any max-height set elsewhere */
+    }
+}
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.apply_button {
+    cursor: pointer;
+}

@@ -4,7 +4,11 @@
   --dark-violet: #2E325A;
   --grey: #979797;
   --light-blue: #D7E0FF;
-  --purple: #F87070;
+  --white: #FFFFFF;
+  --pink: #F87070;
+  --marine: #70F3f8;
+  --violet: #D881F8;
+  --highlight-color:var(--pink);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

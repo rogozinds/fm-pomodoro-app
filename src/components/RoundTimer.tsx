@@ -9,19 +9,25 @@ interface Props {
 //TODO need to reset the remaining timer when setting the new time value
 export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
     //TODO Use var instead
+    // let timerInnerColor = document.documentElement.style.getPropertyValue('--highlight-color');
     let timerInnerColor = "#F87070"
-    const [passedTime, setPassedTime] = useState(5 * 60);
-    const [status, setStatus] = useState(TimerStatus.ACTIVE);
+    const [passedTime, setPassedTime] = useState(time);
+    const [status, setStatus] = useState(TimerStatus.FINISHED);
+    useEffect(() => {
+        // This function will be called every time `time` prop changes
+        setPassedTime(time); // Reset passedTime to the new value of time
+        setStatus(TimerStatus.FINISHED); // Reset status to FINISHED or any initial status you want
+    }, [time]);
     let timerText = useMemo(() => {
         switch (status) {
             case TimerStatus.ACTIVE:
-                return "Pause";
+                return "pause";
             case TimerStatus.PAUSED:
-                return "Resume";
+                return "resume";
             case TimerStatus.FINISHED:
-                return "Restart";
+                return "start";
             default:
-                return "Start"
+                return "start"
         }
     }, [status])
     // Calculate the circle's circumference
@@ -35,7 +41,7 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
-        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        return `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2, '0')}`;
     };
     const timerClick = () => {
         if (status === TimerStatus.ACTIVE) {
@@ -76,15 +82,16 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
                             {timerText}
                         </text>
                     </svg>
-                    <svg width="200" height="200" viewBox="-25 -25 250 250" className={styles.timer}>
-                        <circle r="90" cx="100" cy="100" fill="transparent" stroke="#e0e0e0" stroke-width="50"
-                                stroke-dasharray="565.48px" stroke-dashoffset="0"></circle>
-                        <circle r="90" cx="100" cy="100" stroke="#76e5b1" stroke-width="2" stroke-linecap="round"
-                                stroke-dashoffset="305px" fill="transparent" stroke-dasharray="565.48px"></circle>
-                        <text x="72px" y="115px" fill="#6bdba7" font-size="52px" font-weight="bold"
-                              className={styles.timer_time}>46
-                        </text>
-                    </svg>
+                   {/*Example */}
+                    {/*<svg width="200" height="200" viewBox="-25 -25 250 250" className={styles.timer}>*/}
+                    {/*    <circle r="90" cx="100" cy="100" fill="transparent" stroke="#e0e0e0" stroke-width="50"*/}
+                    {/*            stroke-dasharray="565.48px" stroke-dashoffset="0"></circle>*/}
+                    {/*    <circle r="90" cx="100" cy="100" stroke="#76e5b1" stroke-width="2" stroke-linecap="round"*/}
+                    {/*            stroke-dashoffset="305px" fill="transparent" stroke-dasharray="565.48px"></circle>*/}
+                    {/*    <text x="72px" y="115px" fill="#6bdba7" font-size="52px" font-weight="bold"*/}
+                    {/*          className={styles.timer_time}>46*/}
+                    {/*    </text>*/}
+                    {/*</svg>*/}
             </div>
 
         </>
