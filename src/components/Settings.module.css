@@ -30,5 +30,22 @@
     align-items: center;
 }
 .apply_button {
+
+    position: absolute; /* Positioning relative to the .main */
+    bottom: 0;
+    left: 50%;
+    transform: translateY(50%) translateX(-50%); /* Centering horizontally and moving 50% down */
+
+    color: var(--white);
     cursor: pointer;
+    background-color: var(--highlight-color);
+    width: 140px;
+    height: 53px;
+    line-height: 53px;
+    border-radius: 3rem;
+    text-align: center;
+}
+.apply_button:hover {
+    background-color: var(--highlight-color);
+    opacity: 0.8;
 }
