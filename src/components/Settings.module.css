@@ -9,11 +9,18 @@
     height: 490px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adding a subtle shadow for depth */
     z-index: 1000; /* Ensuring the popup is above other content */
-    padding: 20px; /* Padding inside the popup */
     box-sizing: border-box; /* Ensures padding does not affect overall dimensions */
     color: var(--light-black);
 }
-
+.header {
+    /*padding: 20px; !* Padding inside the popup *!*/
+    padding-inline: 2rem;
+}
+.content {
+    /*padding: 20px; !* Padding inside the popup *!*/
+    padding-inline: 2rem;
+    padding-top: 1.5rem;
+}
 /* Media query for mobile devices */
 @media (max-width: 768px) {
     .main {
@@ -28,6 +35,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 20px;
+    /*margin-bottom: 20px;*/
+}
+.delimiter {
+    height: 1px; /* Or 2px if you want a thicker line */
+    background-color: #ccc; /* Adjust the color as needed */
+    width: 100%; /* Ensures it stretches across the container */
 }
 .apply_button {
 

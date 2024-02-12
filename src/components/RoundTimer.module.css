@@ -1,9 +1,10 @@
 .main {
-    background-color: #2E325A;
+    background-color: var(--light-black);
     width: 410px;
     height: 410px;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: -16px -15px 26px var(--dark-violet);
 }
 
 .timer {

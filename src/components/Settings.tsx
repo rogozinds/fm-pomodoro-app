@@ -6,6 +6,9 @@ import {useState} from "react";
 import {useAtom} from "jotai";
 import {BreaksSwitcher} from "./BreaksSwitcher.tsx";
 
+const Delimiter = () => {
+  return <div className={styles.delimiter}></div>;
+};
 interface Props {
     setShowMenu:(boolean)=>void;
 }
@@ -22,21 +25,31 @@ export const Settings:React.FC<Props> = ({setShowMenu}) => {
     return (
         <>
             <div className={styles.main} >
-                <div className={styles.line}>
-                    <h2>Settings </h2>
-                    <h3 style={{cursor:"pointer"}} onClick={()=>setShowMenu(false)}>X</h3>
+                <div className={styles.header}>
+                    <div className={styles.line}>
+                        <h2>Settings </h2>
+                        <h3 style={{cursor:"pointer"}} onClick={()=>setShowMenu(false)}>X</h3>
+                    </div>
                 </div>
-                <div className={styles.line}>
-                    <h3>BREAKS</h3>
-                    <BreaksSwitcher onBreaksChange={setTempBreaks} />
-                </div>
-                <div className={styles.line}>
-                    <h3>FONT</h3>
-                    <FontSwitcher/>
-                </div>
-                <div className={styles.line}>
-                    <h3>COLOR</h3>
-                    <ColorSwitcher/>
+                <Delimiter></Delimiter>
+                <div className={styles.content}>
+
+                    <div className={styles.line}>
+                        <h3>TIME&nbsp;&nbsp;(MINUTES)</h3>
+                    </div>
+                    <div className={styles.line}>
+                        <BreaksSwitcher onBreaksChange={setTempBreaks} />
+                    </div>
+                    <Delimiter></Delimiter>
+                    <div className={styles.line}>
+                        <h3>FONT</h3>
+                        <FontSwitcher/>
+                    </div>
+                    <Delimiter></Delimiter>
+                    <div className={styles.line}>
+                        <h3>COLOR</h3>
+                        <ColorSwitcher/>
+                    </div>
                 </div>
                 <div className={styles.apply_button} onClick={handleApply}>Apply</div>
             </div>
