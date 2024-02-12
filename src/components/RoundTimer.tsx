@@ -32,7 +32,8 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
     }, [status])
     // Calculate the circle's circumference
     const radius = 45;
-    const circleLength = 2 * Math.PI * radius; // Same as your stroke-dasharray value
+    const innerRadius = 45-1;
+    const circleLength = 2 * Math.PI * innerRadius; // Same as your stroke-dasharray value
 
     // Calculate the stroke-dashoffset based on timeLeft
     const strokeDashoffset = (1 - passedTime / time) * circleLength;
@@ -65,33 +66,32 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
             return () => clearTimeout(timerId);
         }, [passedTime, status]
     );
+
+    // --light-black: #1E213F;
+    // --dark-violet: #2E325A;
     return (
         <>
             <div className={styles.main} onClick={timerClick}>
-                    <svg viewBox="0 0 100 100" className={styles.timer}>
-                        <circle cx="50" cy="50" r={radius} stroke="#2E325A" stroke-width="10px" fill="transparent"/>
-                        <circle cx="50" cy="50" r={radius} stroke={timerInnerColor} strokeWidth={"2px"}
-                                fill="transparent"
+                <svg viewBox="0 0 100 100" className={styles.timer}>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="25%" style={{stopColor: 'white', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: 'red', stopOpacity: 1}} />
+                        </linearGradient>
+                    </defs>
+                        <circle cx="50" cy="50" r={radius} className={styles.circle}/>
+                        <circle cx="50" cy="50" r={innerRadius} className={styles.inner_circle}
                             stroke-dasharray={circleLength} stroke-dashoffset={strokeDashoffset}
                                 // stroke-dasharray={circleLength} stroke-dashoffset={10}
-                                className="timer-progress"/>
-                        <text x="50" y="55" text-anchor="middle" fontSize="15" className={styles.timer_time}>
+                                />
+
+                        <text x="50" y="55" text-anchor="middle" className={styles.timer_time}>
                             {formatTime(passedTime)}
                         </text>
-                        <text x="50" y="55" text-anchor="middle" fontSize="8" className={styles.timer_text}>
+                        <text x="50" y="55" text-anchor="middle" className={styles.timer_text}>
                             {timerText}
                         </text>
                     </svg>
-                   {/*Example */}
-                    {/*<svg width="200" height="200" viewBox="-25 -25 250 250" className={styles.timer}>*/}
-                    {/*    <circle r="90" cx="100" cy="100" fill="transparent" stroke="#e0e0e0" stroke-width="50"*/}
-                    {/*            stroke-dasharray="565.48px" stroke-dashoffset="0"></circle>*/}
-                    {/*    <circle r="90" cx="100" cy="100" stroke="#76e5b1" stroke-width="2" stroke-linecap="round"*/}
-                    {/*            stroke-dashoffset="305px" fill="transparent" stroke-dasharray="565.48px"></circle>*/}
-                    {/*    <text x="72px" y="115px" fill="#6bdba7" font-size="52px" font-weight="bold"*/}
-                    {/*          className={styles.timer_time}>46*/}
-                    {/*    </text>*/}
-                    {/*</svg>*/}
             </div>
 
         </>

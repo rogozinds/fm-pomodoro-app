@@ -1,26 +1,46 @@
 .main {
-    background-color: var(--light-black);
+    /*background-color: var(--light-black);*/
+    /*background-color: transparent;*/
+  background: linear-gradient(to top left, var(--dark-violet), var(--light-black));
+
     width: 410px;
     height: 410px;
     border-radius: 50%;
     cursor: pointer;
     box-shadow: -16px -15px 26px var(--dark-violet);
 }
+@media (max-width: 768px) {
+    .main {
+        width: 310px;
+        height: 310px;
+    }
+}
 
 .timer {
     transform: rotate(-90deg);
-
+    fill: var(--highlight-color);
+}
+.circle {
+    fill: var(--light-black);
+    stroke-width: 4px;
+    stroke:var(--light-black)
+}
+.inner_circle {
+    /*fill: var(--highlight-color);*/
+    stroke-width: 2px;
+    stroke:var(--highlight-color);
+    fill: var(--light-black);
 }
 .timer_time {
     /* translate should be roughly 2r*/
     transform: rotate(90deg) translate(0px, -100px);
     fill: var(--light-blue);
-    font-size: 14px;
+    font-size: 25px;
     font-weight: bold;
 }
 .timer_text {
     /* translate should be roughly 2r*/
     transform: rotate(90deg) translate(0px, -80px);
     fill: var(--light-blue);
-    font-size: 8px;
+    font-size: 14px;
 }
