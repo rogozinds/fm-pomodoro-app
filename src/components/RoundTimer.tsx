@@ -3,14 +3,13 @@ import styles from './RoundTimer.module.css';
 import {TimerStatus} from "../types/status";
 
 interface Props {
-   time :number,
-   setTime: (number)=>void
+   time :number
 }
 //TODO need to reset the remaining timer when setting the new time value
-export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
+export const RoundTimer:React.FC<Props> = ({time}) => {
     //TODO Use var instead
     // let timerInnerColor = document.documentElement.style.getPropertyValue('--highlight-color');
-    let timerInnerColor = "#F87070"
+    // let timerInnerColor = "#F87070"
     const [passedTime, setPassedTime] = useState(time);
     const [status, setStatus] = useState(TimerStatus.FINISHED);
     useEffect(() => {
@@ -39,7 +38,7 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
     const strokeDashoffset = (1 - passedTime / time) * circleLength;
 
     // Format time in mm:ss for display
-    const formatTime = (time) => {
+    const formatTime = (time:number) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         return `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2, '0')}`;
@@ -59,8 +58,6 @@ export const RoundTimer:React.FC<Props> = ({time,setTime}) => {
                     setPassedTime(passedTime - 1);
                 } else if (passedTime === 0 && status === TimerStatus.ACTIVE) {
                     setStatus(TimerStatus.FINISHED)
-                } else {
-
                 }
             }, 1000);
             return () => clearTimeout(timerId);

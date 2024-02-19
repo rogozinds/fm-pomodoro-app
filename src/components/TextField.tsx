@@ -5,7 +5,7 @@ interface Props {
     id:string;
     title: string;
     value:number;
-    onChange: (e:ChangeEvent<number>)=>void
+    onChange: (e:ChangeEvent<HTMLInputElement>)=>void
 }
 export const TextField:React.FC<Props> = ({value, onChange, title, id}) => {
     return (

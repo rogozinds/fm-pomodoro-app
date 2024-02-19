@@ -10,7 +10,7 @@ const colors = [
 export const ColorSwitcher = () => {
     const [currentColor, setCurrentColor] = useAtom(colorAtom);
 
-    const changeHighlightColor = (colorVarName) => {
+    const changeHighlightColor = (colorVarName:string) => {
         setCurrentColor(colorVarName);
         document.documentElement.style.setProperty('--highlight-color', `var(${colorVarName})`);
     };

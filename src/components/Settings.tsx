@@ -10,11 +10,11 @@ const Delimiter = () => {
   return <div className={styles.delimiter}></div>;
 };
 interface Props {
-    setShowMenu:(boolean)=>void;
+    setShowMenu:(_:boolean)=>void;
 }
 export const Settings:React.FC<Props> = ({setShowMenu}) => {
     const [, setBreaks] = useAtom(breaksAtom);
-    const [tempBreaks, setTempBreaks] = useState(null);
+    const [tempBreaks, setTempBreaks] = useState<number[]|null>(null);
 
     const handleApply = () => {
         if (tempBreaks) {

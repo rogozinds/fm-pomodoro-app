@@ -1,6 +1,6 @@
 import styles from './BreaksSwitcher.module.css';
 import { useAtom } from 'jotai';
-import {breaksAtom, colorAtom} from "../store/state.ts";
+import {breaksAtom} from "../store/state.ts";
 import React, {useEffect, useState} from "react";
 import {TextField} from "./TextField.tsx";
 
@@ -8,10 +8,10 @@ interface Props {
     onBreaksChange:(_:number[])=>void
 }
 export const BreaksSwitcher:React.FC<Props> = ({onBreaksChange}) => {
-    const [breaks, setBreaks] = useAtom(breaksAtom);
+    const [breaks] = useAtom(breaksAtom);
     const [localBreaks, setLocalBreaks] = useState(breaks);
     // Update localBreaks when any of the inputs change
-    const handleChange = (index, value) => {
+    const handleChange = (index:number, value:string) => {
         const updatedBreaks = [...localBreaks];
         updatedBreaks[index] = parseInt(value, 10) || 0; // Default to 0 if parseInt returns NaN
         setLocalBreaks(updatedBreaks);
