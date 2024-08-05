@@ -9,7 +9,7 @@
     color: var(--light-black);
 }
 .input {
-    width: 100%;
+    max-width: 50%;
     margin-top: 0.3rem;
     padding: 10px;
     border:none;
@@ -17,4 +17,14 @@
     outline: none;
     font-size: 16px;
     background-color: var(--light-grey);
+}
+@media screen and (max-width: 768px) {
+    .main {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 14rem;
+    }
 }

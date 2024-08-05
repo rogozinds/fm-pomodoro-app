@@ -22,7 +22,7 @@
     padding-top: 1.5rem;
 }
 /* Media query for mobile devices */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .main {
         width: 90vw; /* 90% of the viewport width */
         height: 90vh; /* 90% of the viewport height */
